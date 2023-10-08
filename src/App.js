@@ -1,34 +1,21 @@
 
-import app from "./App.module.css"
 import { useState,useEffect } from "react";
 
-function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword,setKeyword] = useState("");
-
-  const onClick = () => setValue((prev)=>prev+1);
-  const onChange = (event) => {setKeyword(event.target.value)  }
-
-  console.log("i run all the time");
-  const iRunOnlyOnce =  () =>{
-    console.log("i run only once")
-  }
-  useEffect(iRunOnlyOnce,[]);
+function Hello(){
   useEffect(()=>{
-    if(keyword !== ""){
-      console.log("search for ",keyword)
-    }
-  },[keyword])
+    console.log("created")
+    return ()=>console.log("destroyed")
+  },[])
+  return <h1>Hello</h1>
+}
+
+function App() {
+  const [showing,setShowing] = useState(false);
+  const onClick= () => setShowing((prev) => !prev);
   return (
     <div className="App">
-      <input onChange = {onChange} type="text" placeholder="search here..." />
-      <header className="App-header">
-        <h1 className={app.title}>
-          hello
-        </h1>
-      </header>
-      <h2>{counter}</h2>
-      <button onClick={onClick}>click me</button>
+      {showing?<Hello/>:null}
+      <button  onClick={onClick}>{showing?'hide':'show'}</button>
     </div>
   );
 }
