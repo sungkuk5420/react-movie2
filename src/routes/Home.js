@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
+import styles from "./Home.module.css";
 
 function HomeScreen(){
   const [loading,setLoading] = useState(true);
@@ -15,14 +16,13 @@ function HomeScreen(){
     getMovies()
   },[]);
   return (
-    <div>
-    <h1>the Coins!</h1>
+    <div className={styles.container}>
     {loading ? <strong>Loading...</strong>:null}
-    <ul>
+    <div className={styles.movies}>
     {movies.map((item,index)=>{
-      return <Movie title={item.title} medium_cover_image={item.medium_cover_image} summary={item.summary} genres={item.genres}/>
+      return <Movie id={item.id} title={item.title} coverImg={item.medium_cover_image} summary={item.summary} genres={item.genres}/>
     })}
-    </ul>
+    </div>
   </div>
   )
 }
