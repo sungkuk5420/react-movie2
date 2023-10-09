@@ -8,6 +8,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 npm i prop-types
 ```
 
+## react-router-dom
+```
+npm i react-router-dom@5.3.0
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
